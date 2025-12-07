@@ -40,3 +40,26 @@ class YouTubeDownloader:
         ttk.Button(location_frame, text="Browse", command=self.browse_location).pack(
             side=tk.LEFT
         )
+
+        self.progress = ttk.Progressbar(root, length=400, mode="determinate")
+        self.progress.pack(pady=20)
+
+        self.status = ttk.Label(root, text="Ready", wraplength=450)
+        self.status.pack()
+
+        ttk.Button(root, text="Download", command=self.start_download).pack(pady=10)
+
+    def browse_location(self):
+        folder = filedialog.askdirectory()
+        if folder:
+            self.location_var.set(folder)
+
+    def start_download(self):
+        url = self.url_entry.get().strip()
+        if not url:
+            messagebox.showwarning("Warning", "Please enter a URL")
+            return
+
+        thread = threading.Thread(target=self.download)
+        thread.daemon = True
+        thread.start()
