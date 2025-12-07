@@ -31,3 +31,12 @@ class YouTubeDownloader:
         ttk.Label(root, text="Save to:").pack(pady=(10, 0))
         location_frame = ttk.Frame(root)
         location_frame.pack()
+        # change this next line to set download location
+        # but for now we will have it go to the Downloads folder
+        self.location_var = tk.StringVar(value=os.path.expanduser("~/Downloads"))
+        ttk.Entry(location_frame, textvariable=self.location_var, width=35).pack(
+            side=tk.LEFT, padx=5
+        )
+        ttk.Button(location_frame, text="Browse", command=self.browse_location).pack(
+            side=tk.LEFT
+        )
