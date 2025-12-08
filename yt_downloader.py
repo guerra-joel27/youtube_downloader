@@ -78,6 +78,7 @@ class YouTubeDownloader:
             self.root.update_idletasks()
 
     def download(self):
+        # download function
         try:
             self.status.config(text="Starting download...")
 
