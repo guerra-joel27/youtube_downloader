@@ -88,6 +88,7 @@ class YouTubeDownloader:
             opts = {
                 "outtmpl": os.path.join(save_path, "%(title)s.%(ext)s"),
                 "progress_hooks": [self.progress_hook],
+                "merge_output_format": "mp4",
             }
 
             if download_type == "Audio Only":
