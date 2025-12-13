@@ -91,6 +91,7 @@ class YouTubeDownloader:
                 "merge_output_format": "mp4",
             }
 
+            # download options
             if download_type == "Audio Only":
                 opts["format"] = "bestaudio"
                 opts["outtmpl"] = os.path.join(save_path, "%(title)s.%(ext)s")
